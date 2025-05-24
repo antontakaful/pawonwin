@@ -64,7 +64,7 @@ const upload = multer({
     }
 });
 
-// Enhanced soto database
+// Enhanced soto database dengan sample images dan analisis kualitas
 const sotoDatabase = [
     {
         type: 'Soto Ayam',
@@ -72,7 +72,9 @@ const sotoDatabase = [
         price: 'Rp 15.000 - 20.000',
         description: 'Soto ayam dengan kuah bening yang gurih, daging ayam empuk, dan bumbu rempah yang kaya. Dilengkapi dengan nasi putih, kerupuk, dan sambal.',
         ingredients: ['Ayam kampung', 'Kunyit', 'Jahe', 'Serai', 'Daun jeruk'],
-        region: 'Jawa Tengah'
+        region: 'Jawa Tengah',
+        sampleImage: 'https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=400&h=300&fit=crop',
+        merchant: 'Warung Soto Pak Budi'
     },
     {
         type: 'Soto Betawi',
@@ -80,7 +82,9 @@ const sotoDatabase = [
         price: 'Rp 18.000 - 25.000',
         description: 'Soto khas Betawi dengan kuah santan yang creamy, daging sapi dan jeroan, serta rempah-rempah khas. Disajikan dengan ketupat dan kerupuk.',
         ingredients: ['Daging sapi', 'Jeroan', 'Santan', 'Kentang', 'Tomat'],
-        region: 'Jakarta'
+        region: 'Jakarta',
+        sampleImage: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop',
+        merchant: 'Soto Betawi Haji Mamat'
     },
     {
         type: 'Soto Lamongan',
@@ -88,7 +92,9 @@ const sotoDatabase = [
         price: 'Rp 12.000 - 18.000',
         description: 'Soto ayam khas Lamongan dengan kuah kuning yang segar, ayam kampung, dan koya (kerupuk yang dihaluskan). Rasanya unik dan menyegarkan.',
         ingredients: ['Ayam kampung', 'Koya', 'Kacang kedelai', 'Kluwek', 'Tempe'],
-        region: 'Jawa Timur'
+        region: 'Jawa Timur',
+        sampleImage: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&h=300&fit=crop',
+        merchant: 'Soto Lamongan Cak Har'
     },
     {
         type: 'Soto Kudus',
@@ -96,7 +102,9 @@ const sotoDatabase = [
         price: 'Rp 16.000 - 22.000',
         description: 'Soto ayam khas Kudus dengan kuah bening yang jernih, daging ayam yang lembut, dan bumbu yang pas. Disajikan dengan nasi dan kerupuk.',
         ingredients: ['Ayam', 'Tauge', 'Seledri', 'Bawang goreng', 'Kerupuk'],
-        region: 'Jawa Tengah'
+        region: 'Jawa Tengah',
+        sampleImage: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop',
+        merchant: 'Soto Kudus Bu Tini'
     },
     {
         type: 'Soto Banjar',
@@ -104,7 +112,9 @@ const sotoDatabase = [
         price: 'Rp 14.000 - 19.000',
         description: 'Soto khas Kalimantan Selatan dengan daging ayam, perkedel kentang, dan kuah yang gurih. Memiliki cita rasa yang khas.',
         ingredients: ['Ayam', 'Perkedel kentang', 'Ketupat', 'Bawang goreng'],
-        region: 'Kalimantan Selatan'
+        region: 'Kalimantan Selatan',
+        sampleImage: 'https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400&h=300&fit=crop',
+        merchant: 'Soto Banjar Kalimantan'
     },
     {
         type: 'Soto Madura',
@@ -112,9 +122,153 @@ const sotoDatabase = [
         price: 'Rp 17.000 - 23.000',
         description: 'Soto ayam khas Madura dengan kuah kuning yang kental, daging ayam yang empuk, dan bumbu rempah yang kuat.',
         ingredients: ['Ayam', 'Kunyit', 'Kemiri', 'Petai cina', 'Tauge'],
-        region: 'Jawa Timur'
+        region: 'Jawa Timur',
+        sampleImage: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=300&fit=crop',
+        merchant: 'Soto Madura Pak Yusuf'
     }
 ];
+
+// Fungsi untuk menganalisis kualitas foto
+function analyzePhotoQuality(filename) {
+    // Simulasi analisis kualitas foto berdasarkan berbagai faktor
+    const qualityFactors = [
+        { name: 'Pencahayaan', score: Math.floor(Math.random() * 40) + 60 },
+        { name: 'Kejelasan', score: Math.floor(Math.random() * 35) + 65 },
+        { name: 'Komposisi', score: Math.floor(Math.random() * 30) + 70 },
+        { name: 'Fokus', score: Math.floor(Math.random() * 25) + 75 }
+    ];
+    
+    const averageScore = qualityFactors.reduce((sum, factor) => sum + factor.score, 0) / qualityFactors.length;
+    
+    let qualityLevel, feedback, suggestions;
+    
+    if (averageScore >= 85) {
+        qualityLevel = 'Sangat Baik';
+        feedback = 'Foto Anda memiliki kualitas yang sangat baik! Pencahayaan, kejelasan, dan komposisi sudah optimal.';
+        suggestions = ['Pertahankan kualitas foto seperti ini', 'Foto siap untuk dipublikasikan'];
+    } else if (averageScore >= 70) {
+        qualityLevel = 'Baik';
+        feedback = 'Foto Anda cukup baik, namun masih bisa ditingkatkan untuk hasil yang lebih optimal.';
+        suggestions = [
+            'Coba ambil foto dengan pencahayaan yang lebih terang',
+            'Pastikan fokus tepat pada objek soto',
+            'Gunakan background yang lebih bersih'
+        ];
+    } else if (averageScore >= 55) {
+        qualityLevel = 'Cukup';
+        feedback = 'Foto Anda kurang optimal. Beberapa aspek perlu diperbaiki untuk hasil yang lebih baik.';
+        suggestions = [
+            'Ambil foto di tempat dengan cahaya yang lebih baik',
+            'Hindari foto yang blur atau tidak fokus',
+            'Posisikan kamera sejajar dengan mangkuk soto',
+            'Bersihkan area sekitar soto dari gangguan'
+        ];
+    } else {
+        qualityLevel = 'Kurang Baik';
+        feedback = 'Foto Anda kurang jelas dan perlu diperbaiki. Mungkin foto terlalu gelap, blur, atau komposisinya kurang tepat.';
+        suggestions = [
+            'Ambil foto ulang dengan pencahayaan yang lebih terang',
+            'Pastikan kamera tidak bergetar saat mengambil foto',
+            'Bersihkan lensa kamera dari debu atau sidik jari',
+            'Gunakan mode fokus otomatis pada kamera',
+            'Ambil foto dari jarak yang lebih dekat'
+        ];
+    }
+    
+    return {
+        qualityLevel,
+        score: Math.round(averageScore),
+        feedback,
+        suggestions,
+        factors: qualityFactors
+    };
+}
+
+// Fungsi untuk generate rekomendasi harga AI
+function generatePriceRecommendation(sotoType, quality) {
+    const basePrice = {
+        'Soto Ayam': 15000,
+        'Soto Betawi': 20000,
+        'Soto Lamongan': 14000,
+        'Soto Kudus': 18000,
+        'Soto Banjar': 16000,
+        'Soto Madura': 19000
+    };
+    
+    const base = basePrice[sotoType] || 15000;
+    const qualityMultiplier = quality === 'Premium' ? 1.2 : quality === 'Standard' ? 1.0 : 0.8;
+    const variation = (Math.random() - 0.5) * 0.2; // ±10% variation
+    
+    const recommendedPrice = Math.round((base * qualityMultiplier * (1 + variation)) / 1000) * 1000;
+    const minPrice = Math.max(10000, recommendedPrice - 3000);
+    const maxPrice = Math.min(25000, recommendedPrice + 3000);
+    
+    return {
+        recommended: recommendedPrice,
+        range: {
+            min: minPrice,
+            max: maxPrice
+        },
+        marketAnalysis: {
+            lowest: 10000,
+            highest: 25000,
+            average: 17500
+        },
+        reasoning: `Berdasarkan analisis AI, harga yang direkomendasikan untuk ${sotoType} dengan kualitas ${quality} adalah Rp ${recommendedPrice.toLocaleString('id-ID')}. Harga ini competitive dengan range pasar Rp ${minPrice.toLocaleString('id-ID')} - Rp ${maxPrice.toLocaleString('id-ID')}.`
+    };
+}
+
+// Fungsi untuk generate copywriting AI
+function generateAICopywriting(sotoData, photoQuality) {
+    const templates = [
+        {
+            title: "Kelezatan Autentik yang Menggugah Selera",
+            content: `Nikmati cita rasa ${sotoData.type} yang autentik dengan bumbu rempah pilihan yang telah diracik secara tradisional. Setiap suapan memberikan pengalaman kuliner yang tak terlupakan dengan ${sotoData.ingredients.join(", ").toLowerCase()} yang fresh dan berkualitas premium.`
+        },
+        {
+            title: "Tradisi Kuliner Nusantara di Setiap Mangkuk",
+            content: `${sotoData.type} kami menghadirkan kearifan kuliner ${sotoData.region} yang telah turun-temurun. Dimasak dengan resep rahasia keluarga, menggunakan ${sotoData.ingredients.slice(0, 3).join(", ").toLowerCase()} pilihan untuk cita rasa yang sempurna.`
+        },
+        {
+            title: "Sensasi Rasa yang Memanjakan Lidah",
+            content: `Rasakan kehangatan ${sotoData.type} dengan kuah yang gurih dan daging yang empuk. Kombinasi sempurna antara ${sotoData.ingredients[0].toLowerCase()} berkualitas tinggi dengan bumbu rempah nusantara yang kaya akan cita rasa.`
+        }
+    ];
+    
+    const selectedTemplate = templates[Math.floor(Math.random() * templates.length)];
+    
+    const sellingPoints = [
+        "🌟 Resep turun-temurun yang autentik",
+        "🥘 Bahan-bahan segar pilihan setiap hari",
+        "👨‍🍳 Dimasak oleh chef berpengalaman",
+        "🔥 Disajikan selalu hangat dan fresh",
+        "💝 Porsi yang mengenyangkan dan memuaskan",
+        "🏆 Sudah dipercaya ribuan pelanggan",
+        "📍 Mudah dijangkau dan parkir luas",
+        "💰 Harga terjangkau untuk kualitas premium"
+    ];
+    
+    const selectedPoints = sellingPoints.sort(() => 0.5 - Math.random()).slice(0, 4);
+    
+    const callToAction = [
+        "Jangan sampai terlewat! Pesan sekarang juga!",
+        "Buruan order sebelum kehabisan!",
+        "Yuk, cobain sekarang dan rasakan bedanya!",
+        "Order now dan nikmati promo spesial hari ini!"
+    ];
+    
+    const photoQualityBonus = photoQuality.score >= 80 ? 
+        "\n\n✨ BONUS: Foto Anda sangat menarik! Cocok untuk dipromosikan di media sosial dengan kualitas visual yang memukau." : "";
+    
+    return {
+        title: selectedTemplate.title,
+        description: selectedTemplate.content,
+        sellingPoints: selectedPoints,
+        callToAction: callToAction[Math.floor(Math.random() * callToAction.length)],
+        hashtags: [`#${sotoData.type.replace(/ /g, '')}`, `#Kuliner${sotoData.region.replace(/ /g, '')}`, "#SotoEnak", "#KulinerNusantara", "#MakananTradisional"],
+        photoQualityBonus
+    };
+}
 
 // Fungsi untuk menganalisis foto soto (simulasi AI)
 function analyzeSotoPhoto(filename) {
@@ -122,15 +276,49 @@ function analyzeSotoPhoto(filename) {
     const randomIndex = Math.floor(Math.random() * sotoDatabase.length);
     const sotoData = sotoDatabase[randomIndex];
     
-    // Simulasi confidence score berdasarkan "kualitas" foto
-    const confidence = Math.floor(Math.random() * 25) + 75; // 75-100%
+    // Analisis kualitas foto
+    const photoQuality = analyzePhotoQuality(filename);
+    
+    // Generate rekomendasi produk serupa (foto soto yang bagus)
+    const recommendations = sotoDatabase
+        .filter(item => item.type !== sotoData.type)
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 3)
+        .map(item => ({
+            ...item,
+            isRecommended: true,
+            qualityRating: 4.5 + (Math.random() * 0.5),
+            totalReviews: Math.floor(Math.random() * 500) + 100
+        }));
+    
+    // Generate rekomendasi harga
+    const priceRecommendation = generatePriceRecommendation(sotoData.type, sotoData.quality);
+    
+    // Generate copywriting AI
+    const aiCopywriting = generateAICopywriting(sotoData, photoQuality);
+    
+    // Simulasi confidence score berdasarkan kualitas foto
+    const confidence = Math.max(70, Math.min(95, photoQuality.score + Math.floor(Math.random() * 10)));
     
     return {
+        // Data soto yang terdeteksi
         ...sotoData,
         confidence: confidence,
         filename: filename,
         uploadTime: new Date().toLocaleString('id-ID'),
-        imageUrl: `/upload/${filename}`
+        imageUrl: `/upload/${filename}`,
+        
+        // Analisis kualitas foto
+        photoQuality: photoQuality,
+        
+        // Rekomendasi foto soto yang bagus
+        recommendations: recommendations,
+        
+        // Rekomendasi harga
+        priceRecommendation: priceRecommendation,
+        
+        // AI Copywriting
+        aiCopywriting: aiCopywriting
     };
 }
 

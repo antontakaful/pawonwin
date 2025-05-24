@@ -217,42 +217,156 @@ class SotoAnalyzer {
     }
 
     displayResult(analysis) {
-        document.getElementById('resultTitle').textContent = analysis.type;
-        document.getElementById('confidenceBadge').textContent = `Confidence: ${analysis.confidence}%`;
+        // 1. Photo Analysis Section
+        this.displayPhotoAnalysis(analysis);
         
-        const qualityColor = analysis.quality === 'Premium' ? '#4CAF50' : 
-                           analysis.quality === 'Standard' ? '#FF9800' : '#757575';
+        // 2. Recommendations Section
+        this.displayRecommendations(analysis.recommendations);
         
-        const resultGrid = document.getElementById('resultGrid');
-        resultGrid.innerHTML = `
-            <div class="result-card">
-                <h3>🏆 Kualitas</h3>
-                <p style="color: ${qualityColor}; font-weight: 600;">${analysis.quality}</p>
-            </div>
-            <div class="result-card">
-                <h3>💰 Estimasi Harga</h3>
-                <p style="font-weight: 600; color: #2E7D32;">${analysis.price}</p>
-            </div>
-            <div class="result-card">
-                <h3>📝 Deskripsi</h3>
-                <p>${analysis.description}</p>
-            </div>
-            <div class="result-card">
-                <h3>⏰ Waktu Analisis</h3>
-                <p>${analysis.uploadTime}</p>
+        // 3. Price Recommendations
+        this.displayPriceRecommendations(analysis.priceRecommendation);
+        
+        // 4. AI Copywriting
+        this.displayAICopywriting(analysis.aiCopywriting);
+        
+        // Show result container with smooth scroll
+        this.resultContainer.style.display = 'block';
+        this.resultContainer.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    displayPhotoAnalysis(analysis) {
+        const photoPreview = document.getElementById('resultPhotoPreview');
+        const qualityFeedback = document.getElementById('photoQualityFeedback');
+        const qualityIndicators = document.getElementById('qualityIndicators');
+        const photoSuggestions = document.getElementById('photoSuggestions');
+        
+        // Display uploaded photo
+        photoPreview.innerHTML = `
+            <img src="${analysis.imageUrl}" alt="Foto soto yang diupload">
+            <p><strong>Jenis Soto Terdeteksi:</strong> ${analysis.type}</p>
+            <p><strong>Confidence:</strong> ${analysis.confidence}%</p>
+        `;
+        
+        // Display quality feedback
+        const qualityColor = analysis.photoQuality.score >= 80 ? '#4caf50' : 
+                           analysis.photoQuality.score >= 65 ? '#ff9800' : '#f44336';
+        
+        qualityFeedback.innerHTML = `
+            <div style="text-align: center; margin: 20px 0;">
+                <div style="color: ${qualityColor}; font-size: 2rem; font-weight: bold;">
+                    ${analysis.photoQuality.score}/100
+                </div>
+                <div style="color: ${qualityColor}; font-weight: 600; margin: 10px 0;">
+                    Kualitas: ${analysis.photoQuality.qualityLevel}
+                </div>
+                <p style="color: #666; margin: 15px 0;">
+                    ${analysis.photoQuality.feedback}
+                </p>
             </div>
         `;
         
-        this.resultContainer.style.display = 'block';
-        this.resultContainer.scrollIntoView({ behavior: 'smooth' });
+        // Display quality indicators
+        qualityIndicators.innerHTML = analysis.photoQuality.factors.map(factor => `
+            <div class="quality-indicator">
+                <div class="quality-score">${factor.score}</div>
+                <div>${factor.name}</div>
+            </div>
+        `).join('');
         
-        // Add animation
-        const cards = document.querySelectorAll('.result-card');
-        cards.forEach((card, index) => {
-            setTimeout(() => {
-                card.style.animation = 'fadeInUp 0.5s ease forwards';
-            }, index * 100);
-        });
+        // Display suggestions if quality is not perfect
+        if (analysis.photoQuality.score < 85) {
+            photoSuggestions.innerHTML = `
+                <h4>💡 Saran Perbaikan Foto:</h4>
+                <ul>
+                    ${analysis.photoQuality.suggestions.map(suggestion => `<li>${suggestion}</li>`).join('')}
+                </ul>
+            `;
+            photoSuggestions.style.display = 'block';
+        } else {
+            photoSuggestions.style.display = 'none';
+        }
+    }
+
+    displayRecommendations(recommendations) {
+        const recommendationsGrid = document.getElementById('recommendationsGrid');
+        
+        recommendationsGrid.innerHTML = recommendations.map(item => `
+            <div class="recommendation-card">
+                <img src="${item.sampleImage}" alt="${item.type}" class="recommendation-image">
+                <div class="recommendation-content">
+                    <div class="merchant-name">${item.merchant}</div>
+                    <h4>${item.type}</h4>
+                    <p>${item.description.substring(0, 100)}...</p>
+                    <div class="rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span>${item.qualityRating.toFixed(1)} (${item.totalReviews} reviews)</span>
+                    </div>
+                    <div style="margin-top: 10px; color: #2e7d32; font-weight: 600;">
+                        ${item.price}
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    displayPriceRecommendations(priceRec) {
+        const priceReasoning = document.getElementById('priceReasoning');
+        const priceCards = document.getElementById('priceCards');
+        
+        priceReasoning.textContent = priceRec.reasoning;
+        
+        priceCards.innerHTML = `
+            <div class="price-card">
+                <div class="price-label">Harga Terendah Pasar</div>
+                <div class="price-value">Rp ${priceRec.marketAnalysis.lowest.toLocaleString('id-ID')}</div>
+            </div>
+            <div class="price-card ai-recommended">
+                <div class="price-label" style="color: white;">🤖 Rekomendasi AI</div>
+                <div class="price-value" style="color: white;">Rp ${priceRec.recommended.toLocaleString('id-ID')}</div>
+                <div style="color: rgba(255,255,255,0.9); font-size: 0.8rem;">Optimal & Competitive</div>
+            </div>
+            <div class="price-card">
+                <div class="price-label">Harga Tertinggi Pasar</div>
+                <div class="price-value">Rp ${priceRec.marketAnalysis.highest.toLocaleString('id-ID')}</div>
+            </div>
+            <div class="price-card">
+                <div class="price-label">Range Harga</div>
+                <div class="price-value" style="font-size: 1.2rem;">
+                    Rp ${priceRec.range.min.toLocaleString('id-ID')} - ${priceRec.range.max.toLocaleString('id-ID')}
+                </div>
+            </div>
+        `;
+    }
+
+    displayAICopywriting(copywriting) {
+        const aiCopywritingContent = document.getElementById('aiCopywritingContent');
+        const hashtagsContainer = document.getElementById('hashtagsContainer');
+        const ctaButton = document.getElementById('ctaButton');
+        
+        aiCopywritingContent.innerHTML = `
+            <h4>${copywriting.title}</h4>
+            <p style="margin: 15px 0; line-height: 1.6;">${copywriting.description}</p>
+            
+            <h5 style="margin-top: 25px; margin-bottom: 15px;">🎯 Selling Points:</h5>
+            <ul class="selling-points">
+                ${copywriting.sellingPoints.map(point => `<li>${point}</li>`).join('')}
+            </ul>
+            
+            ${copywriting.photoQualityBonus ? `
+                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #4caf50;">
+                    ${copywriting.photoQualityBonus}
+                </div>
+            ` : ''}
+        `;
+        
+        hashtagsContainer.innerHTML = copywriting.hashtags.map(tag => 
+            `<span class="hashtag">${tag}</span>`
+        ).join('');
+        
+        ctaButton.textContent = copywriting.callToAction;
+        ctaButton.onclick = () => {
+            alert('🎉 Terima kasih! Fitur pemesanan akan segera hadir!');
+        };
     }
 
     saveToLocalHistory(data) {

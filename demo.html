@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soto Analyzer - Demo Enhanced Features</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .demo-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 4px solid #ff8c42;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .feature-list li:before {
+            content: "✅ ";
+            color: #4caf50;
+            font-weight: bold;
+        }
+        .demo-button {
+            background: linear-gradient(135deg, #ff8c42 0%, #ff7324 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 140, 66, 0.4);
+        }
+        .screenshot {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍜 Soto Analyzer - Enhanced Features Demo</h1>
+        
+        <div class="demo-section">
+            <h2>🎯 Fitur Baru yang Ditambahkan</h2>
+            <ul class="feature-list">
+                <li><strong>Analisis Kualitas Foto:</strong> AI mendeteksi apakah foto blur, gelap, atau kurang jelas</li>
+                <li><strong>Rekomendasi Foto Soto Terbaik:</strong> Menampilkan contoh foto soto berkualitas dari merchant terverifikasi</li>
+                <li><strong>Estimasi Harga AI:</strong> Memberikan rekomendasi harga optimal berdasarkan analisis pasar (10k-25k)</li>
+                <li><strong>AI Copywriting:</strong> Generate deskripsi selling point otomatis dengan hashtags</li>
+                <li><strong>Progress Bar Upload:</strong> Visual feedback saat upload foto</li>
+                <li><strong>Enhanced UI/UX:</strong> Design yang lebih modern dan responsif</li>
+            </ul>
+        </div>
+
+        <div class="demo-section">
+            <h2>📸 Contoh Hasil Analisis Foto</h2>
+            <p>Setelah upload foto soto, aplikasi akan menampilkan:</p>
+            
+            <h3>1. Analisis Kualitas Foto</h3>
+            <div style="background: white; padding: 15px; border-radius: 8px; margin: 10px 0;">
+                <p><strong>Score:</strong> 78/100 - Kualitas Baik</p>
+                <p><strong>Feedback:</strong> "Foto Anda cukup baik, namun masih bisa ditingkatkan untuk hasil yang lebih optimal."</p>
+                <p><strong>Saran:</strong></p>
+                <ul>
+                    <li>Coba ambil foto dengan pencahayaan yang lebih terang</li>
+                    <li>Pastikan fokus tepat pada objek soto</li>
+                    <li>Gunakan background yang lebih bersih</li>
+                </ul>
+            </div>
+
+            <h3>2. Rekomendasi Foto Soto Terbaik</h3>
+            <p>Menampilkan 3 contoh foto soto berkualitas tinggi dari merchant yang sudah terverifikasi AI:</p>
+            <ul>
+                <li>Soto Betawi Haji Mamat - Rating 4.8/5 (324 reviews)</li>
+                <li>Soto Lamongan Cak Har - Rating 4.6/5 (198 reviews)</li>
+                <li>Soto Kudus Bu Tini - Rating 4.7/5 (267 reviews)</li>
+            </ul>
+
+            <h3>3. Rekomendasi Harga AI</h3>
+            <div style="background: white; padding: 15px; border-radius: 8px; margin: 10px 0;">
+                <p><strong>🤖 Rekomendasi AI:</strong> Rp 18.000</p>
+                <p><strong>Range Pasar:</strong> Rp 15.000 - 21.000</p>
+                <p><strong>Reasoning:</strong> "Berdasarkan analisis AI, harga yang direkomendasikan untuk Soto Ayam dengan kualitas Premium adalah Rp 18.000. Harga ini competitive dengan range pasar."</p>
+            </div>
+
+            <h3>4. AI Copywriting</h3>
+            <div style="background: white; padding: 15px; border-radius: 8px; margin: 10px 0;">
+                <h4>Kelezatan Autentik yang Menggugah Selera</h4>
+                <p>Nikmati cita rasa Soto Ayam yang autentik dengan bumbu rempah pilihan yang telah diracik secara tradisional...</p>
+                <p><strong>Selling Points:</strong></p>
+                <ul>
+                    <li>🌟 Resep turun-temurun yang autentik</li>
+                    <li>🥘 Bahan-bahan segar pilihan setiap hari</li>
+                    <li>👨‍🍳 Dimasak oleh chef berpengalaman</li>
+                    <li>🔥 Disajikan selalu hangat dan fresh</li>
+                </ul>
+                <p><strong>Hashtags:</strong> #SotoAyam #KulinerJawaTengah #SotoEnak #KulinerNusantara</p>
+                <p><strong>CTA:</strong> "Yuk, cobain sekarang dan rasakan bedanya!"</p>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🚀 Cara Menjalankan Aplikasi</h2>
+            <div class="code-block">
+# Quick Start (Windows):
+1. Double-click "fix-dependencies.bat"
+2. Double-click "start.bat" 
+3. Buka browser ke http://localhost:3000
+
+# Manual Installation:
+npm install express ejs multer uuid
+npm install --save-dev nodemon
+npm start
+            </div>
+            
+            <button class="demo-button" onclick="window.open('http://localhost:3000', '_blank')">
+                🌐 Buka Aplikasi
+            </button>
+            
+            <button class="demo-button" onclick="alert('Upload foto soto untuk melihat semua fitur!')">
+                📸 Test Upload
+            </button>
+        </div>
+
+        <div class="demo-section">
+            <h2>🔧 Teknologi yang Digunakan</h2>
+            <ul class="feature-list">
+                <li><strong>Backend:</strong> Node.js + Express.js + Multer</li>
+                <li><strong>Frontend:</strong> EJS Template + Enhanced CSS + Vanilla JS</li>
+                <li><strong>AI Simulation:</strong> Advanced algorithms untuk analisis foto dan harga</li>
+                <li><strong>Image Processing:</strong> Quality analysis dengan multiple factors</li>
+                <li><strong>PWA:</strong> Service Worker untuk offline support</li>
+                <li><strong>Responsive Design:</strong> Mobile-first approach</li>
+            </ul>
+        </div>
+
+        <div class="demo-section">
+            <h2>📝 API Endpoints</h2>
+            <div class="code-block">
+POST /upload - Upload dan analisis foto soto
+GET /api/history - Riwayat analisis  
+GET /api/stats - Statistik server
+GET /health - Health check
+DELETE /upload/:filename - Hapus file
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <h3>🎉 Aplikasi Siap Digunakan!</h3>
+            <p>Upload foto soto Anda dan nikmati pengalaman analisis AI yang lengkap dengan semua fitur enhanced.</p>
+            <button class="demo-button" onclick="window.location.href='/'">
+                ← Kembali ke Aplikasi Utama
+            </button>
+        </div>
+    </div>
+</body>
+</html>
