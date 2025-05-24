@@ -1,4 +1,4 @@
-# 🍜 SOTO ANALYZER - QUICK START GUIDE
+# 🍜 PAWONWIN - QUICK START GUIDE
 
 ## Untuk menjalankan aplikasi ini dengan cepat:
 

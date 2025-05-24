@@ -1,10 +1,10 @@
-# Soto Analyzer
+# Pwowin
 
-Aplikasi web untuk menganalisis foto soto dan memberikan rekomendasi kualitas, harga, dan deskripsi secara otomatis.
+Aplikasi web untuk menganalisis foto makanan dan memberikan rekomendasi kualitas, harga, dan deskripsi secara otomatis.
 
 ## Fitur
 
-- ✅ Upload foto soto dengan drag & drop atau klik
+- ✅ Upload foto makanan dengan drag & drop atau klik
 - ✅ Validasi file gambar dan ukuran maksimal 5MB
 - ✅ Preview foto sebelum upload
 - ✅ Analisis otomatis foto soto (simulasi AI)
