@@ -1,0 +1,26 @@
+{
+  "name": "soto-analyzer",
+  "version": "1.0.0",
+  "description": "Upload foto soto untuk mendapatkan rekomendasi kualitas, harga, dan deskripsi otomatis",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "jest",
+    "install-deps": "npm install"
+  },
+  "keywords": ["soto", "food", "analyzer", "upload", "express", "multer", "ai", "kuliner"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "multer": "^1.4.5",
+    "ejs": "^3.1.9",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
+  }
+}

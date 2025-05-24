@@ -1,0 +1,23 @@
+{
+  "name": "Soto Analyzer",
+  "short_name": "SotoApp",
+  "description": "Upload foto soto untuk mendapatkan rekomendasi kualitas, harga, dan deskripsi otomatis",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5e6d3",
+  "theme_color": "#ff8c42",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' fill='%23ff8c42' rx='20'/><text x='96' y='140' font-size='100' text-anchor='middle' fill='white'>🍜</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' fill='%23ff8c42' rx='50'/><text x='256' y='350' font-size='280' text-anchor='middle' fill='white'>🍜</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["food", "utility", "photography"]
+}
