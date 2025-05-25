@@ -1,40 +1,32 @@
-# 🍜 Soto Analyzer - Enhanced AI Photo Analysis
+# 🍜 Soto Analyzer - Enhanced AI Photo Analysis (Mockup Design)
 
-Aplikasi web untuk menganalisis foto soto dan memberikan rekomendasi kualitas, harga, dan deskripsi secara otomatis dengan teknologi AI terdepan.
+Aplikasi web untuk menganalisis foto soto dan memberikan rekomendasi kualitas, harga, dan deskripsi secara otomatis dengan teknologi AI terdepan. **Layout telah diupdate sesuai mockup design yang diberikan.**
 
-## 🎯 Fitur Enhanced (Update Terbaru)
+## 🎯 Fitur Sesuai Mockup Design
 
-### 📸 1. Analisis Kualitas Foto AI
-- **Deteksi Kualitas:** AI menganalisis pencahayaan, kejelasan, komposisi, dan fokus
-- **Scoring System:** Score 0-100 dengan feedback detail
-- **Saran Perbaikan:** Tips spesifik untuk meningkatkan kualitas foto
-- **Real-time Feedback:** Memberitahu jika foto blur, gelap, atau kurang optimal
+### 📸 1. Photo Analysis dengan Feedback
+- ✅ **Tampilan foto yang diupload** dengan frame yang clean
+- ✅ **Feedback box berwarna pink** sesuai mockup
+- ✅ **Pesan feedback yang informatif** (blur, gelap, pencahayaan)
+- ✅ **Styling yang konsisten** dengan design system
 
-### 🍜 2. Rekomendasi Foto Soto Terbaik
-- **Merchant Terverifikasi:** Tampilan foto soto berkualitas dari merchant terpercaya
-- **Rating & Reviews:** Sistem rating 5 bintang dengan jumlah review
-- **Kualitas Referensi:** Contoh foto soto yang sudah disetujui AI
-- **Inspiration Gallery:** Galeri foto untuk inspirasi fotografi makanan
+### 🍜 2. Grid 2x2 Recommendations
+- ✅ **Layout grid 2x2** untuk rekomendasi foto soto
+- ✅ **Card design yang clean** dengan placeholder image
+- ✅ **Nama soto yang spesifik** (Soto Ayam Cerah, Soto Betawi Detail, etc.)
+- ✅ **Responsive grid** yang adaptif di mobile
 
-### 💰 3. AI Price Recommendation Engine
-- **Smart Pricing:** Analisis harga berdasarkan jenis soto dan kualitas
-- **Market Analysis:** Perbandingan dengan harga pasar (range 10k-25k)
-- **Competitive Pricing:** Rekomendasi harga yang optimal dan kompetitif
-- **Price Reasoning:** Penjelasan detail mengapa AI memberikan harga tersebut
+### 💰 3. Pricing Layout Sesuai Mockup
+- ✅ **Background hijau** untuk section pricing
+- ✅ **Format "Harga Termurah" dan "Harga Termahal"** 
+- ✅ **Rekomendasi AI dengan highlight** di box terpisah
+- ✅ **Typography yang sesuai** dengan hierarchy yang jelas
 
-### ✨ 4. AI Copywriting & Content Generator
-- **Auto Description:** Generate deskripsi produk yang menarik
-- **Selling Points:** Bullet points keunggulan produk otomatis
-- **Smart Hashtags:** Generate hashtags yang relevan untuk media sosial
-- **Call-to-Action:** CTA yang persuasif dan menarik
-- **SEO Optimized:** Content yang dioptimasi untuk search engine
-
-### 🎨 5. Enhanced User Experience
-- **Modern UI/UX:** Interface yang lebih modern dan user-friendly
-- **Progress Indicators:** Visual feedback saat upload dan analisis
-- **Smooth Animations:** Transisi dan animasi yang halus
-- **Mobile Responsive:** Optimal di semua device
-- **PWA Support:** Offline capability dan installable app
+### ✨ 4. Clean Copywriting Section
+- ✅ **Background biru** untuk section deskripsi
+- ✅ **Selling points tanpa emoji** sesuai mockup
+- ✅ **Action buttons "Simpan" dan "Bagikan"** 
+- ✅ **Layout yang responsive** dan user-friendly
 
 ## 🛠️ Teknologi
 
@@ -71,66 +63,62 @@ npm install --save-dev nodemon
 npm start
 ```
 
-## 📊 Demo Results Example
+## 📊 Demo Results Sesuai Mockup
 
-Setelah upload foto soto, aplikasi akan menampilkan:
+Setelah upload foto soto, aplikasi akan menampilkan layout yang persis seperti mockup:
 
-### 1. 📸 Photo Quality Analysis
+### 1. 📸 Photo Analysis
 ```
-Score: 78/100 - Kualitas Baik
-Feedback: "Foto cukup baik, namun bisa ditingkatkan"
-Saran:
-• Coba ambil foto dengan pencahayaan lebih terang
-• Pastikan fokus tepat pada objek soto
-• Gunakan background yang lebih bersih
-```
+Foto Soto Anda:
+[Gambar foto yang diupload]
 
-### 2. 🍜 Soto Recommendations (3 cards)
-```
-[Card 1] Soto Betawi Haji Mamat
-⭐⭐⭐⭐⭐ 4.8/5 (324 reviews)
-Rp 18.000 - 25.000
-
-[Card 2] Soto Lamongan Cak Har  
-⭐⭐⭐⭐⭐ 4.6/5 (198 reviews)
-Rp 12.000 - 18.000
-
-[Card 3] Soto Kudus Bu Tini
-⭐⭐⭐⭐⭐ 4.7/5 (267 reviews)
-Rp 16.000 - 22.000
+[Box Pink] Foto terlihat agak gelap dan sedikit blur 
+di bagian topping. Coba ambil dengan pencahayaan 
+lebih baik dan fokus yang tajam.
 ```
 
-### 3. 💰 AI Price Recommendations
+### 2. 🍜 Rekomendasi Grid 2x2
 ```
-🤖 Rekomendasi AI: Rp 18.000
-Range Pasar: Rp 15.000 - 21.000
-Harga Terendah: Rp 10.000
-Harga Tertinggi: Rp 25.000
+Rekomendasi Foto Soto (AI)
 
-Reasoning: "Berdasarkan analisis AI, harga yang 
-direkomendasikan untuk Soto Ayam dengan kualitas 
-Premium adalah Rp 18.000. Harga ini competitive 
-dengan range pasar."
+[🌟 Card 1]     [🌟 Card 2]
+Soto Ayam Cerah   Soto Betawi Detail
+
+[🌟 Card 3]     [🌟 Card 4] 
+Soto Lamongan Top  Soto Babat Khas
 ```
 
-### 4. ✨ AI Copywriting
+### 3. 💰 Pricing Layout Hijau
 ```
-Title: "Kelezatan Autentik yang Menggugah Selera"
+Estimasi & Rekomendasi Harga
 
-Description: "Nikmati cita rasa Soto Ayam yang autentik 
-dengan bumbu rempah pilihan yang telah diracik secara 
-tradisional. Setiap suapan memberikan pengalaman 
-kuliner yang tak terlupakan..."
+Harga Termurah:     Rp 12.000
+Harga Termahal:     Rp 28.000
 
-Selling Points:
-🌟 Resep turun-temurun yang autentik
-🥘 Bahan-bahan segar pilihan setiap hari
-👨‍🍳 Dimasak oleh chef berpengalaman
-🔥 Disajikan selalu hangat dan fresh
-
-Hashtags: #SotoAyam #KulinerJawaTengah #SotoEnak
-CTA: "Yuk, cobain sekarang dan rasakan bedanya!"
+[Box Hijau Highlight]
+Rekomendasi Harga AI:
+Rp 18.500
 ```
+
+### 4. ✨ Copywriting Section Biru
+```
+Deskripsi & Selling Points (AI)
+
+Soto khas Nusantara dengan kuah kaldu ayam kampung 
+yang medok, diracik dengan bumbu pilihan...
+
+Selling Points Utama:
+• Kuah Kaldu Premium: Dimasak berjam-jam untuk rasa maksimal
+• Topping Melimpah: Isian lengkap dan tidak pelit
+• 100% Halal: Diproses secara higienis dan halal
+• Pilihan Pedas: Sambal racikan sendiri yang nendang
+
+[Simpan Analisis] [Bagikan Hasil]
+```
+
+## 🎆 Preview Demo
+
+**🔗 [Lihat Demo Layout: /mockup-demo.html](/mockup-demo.html)**
 
 ## 📁 Struktur Proyek Enhanced
 

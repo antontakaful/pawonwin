@@ -1,73 +1,58 @@
-# 🍜 PAWONWIN - QUICK START GUIDE
+# Soto Analyzer - Quick Start Guide
 
-## Untuk menjalankan aplikasi ini dengan cepat:
+## 🚀 Super Quick Start (Windows)
 
-### WINDOWS USERS:
-1. **Double-click `fix-dependencies.bat`** - Install semua dependencies yang diperlukan
-2. **Double-click `start.bat`** - Jalankan server
-3. **Buka browser ke `http://localhost:3000`**
+### Method 1: One-Click Setup
+1. **Double-click `start.bat`** 
+   - This will automatically install dependencies and start the server
+   - Open browser to `http://localhost:3000`
+   - Upload a soto photo and enjoy!
 
-### LINUX/MAC USERS:
+### Method 2: Manual Setup
 ```bash
-# Make scripts executable
-chmod +x fix-dependencies.sh
-chmod +x install.sh
+# 1. Install dependencies
+double-click "fix-dependencies.bat"
+# OR
+npm install
 
-# Install dependencies
-./fix-dependencies.sh
-
-# Start server
+# 2. Start server  
 npm start
+
+# 3. Open browser
+http://localhost:3000
 ```
 
-### MANUAL INSTALLATION:
+## 📱 Features Ready to Use
+
+✅ **Photo Upload**: Drag & drop or click to upload  
+✅ **AI Analysis**: Automatic soto type detection  
+✅ **Quality Assessment**: Photo quality scoring with feedback  
+✅ **Price Recommendations**: AI-powered pricing suggestions  
+✅ **Copywriting Generator**: Marketing text creation  
+✅ **Responsive Design**: Works on mobile and desktop  
+✅ **PWA Support**: Install as mobile app  
+✅ **Offline Mode**: Works without internet after first load  
+
+## 🛠️ Troubleshooting
+
+### Error: Port 3000 in use
 ```bash
-# Install dependencies
-npm install express ejs multer uuid
-npm install --save-dev nodemon
-
-# Start server
-npm start
+set PORT=3001 && npm start
 ```
 
-## ❌ Error yang Umum Terjadi:
-
-**Error: Cannot find module 'ejs'**
-- Solusi: Jalankan `fix-dependencies.bat` atau `npm install ejs`
-
-**Error: Port 3000 in use**
-- Solusi: Tutup aplikasi lain yang menggunakan port 3000
-- Atau ubah port: `set PORT=3001 && npm start`
-
-**Error: ENOENT upload folder**
-- Solusi: Folder upload akan dibuat otomatis saat server start
-
-## 🌐 Setelah server berjalan:
-- Buka browser ke: `http://localhost:3000`
-- Upload foto soto (.jpg, .png, .gif, .webp)
-- Maksimal ukuran file: 5MB
-- Lihat hasil analisis otomatis
-
-## 📁 File Structure:
-```
-soto-analyzer/
-├── app.js              # Main server file
-├── package.json        # Dependencies
-├── start.bat          # Quick start (Windows)
-├── fix-dependencies.bat # Fix install issues
-├── upload/            # Uploaded photos folder
-├── views/index.ejs    # Main HTML template
-└── public/            # CSS, JS, PWA files
+### Error: Dependencies not found
+```bash
+double-click "fix-dependencies.bat"
 ```
 
-## 🔧 Features:
-- ✅ Drag & drop upload
-- ✅ Image preview
-- ✅ AI simulation analysis
-- ✅ Progress bar
-- ✅ Upload history
-- ✅ Responsive design
-- ✅ PWA support
-- ✅ Offline capability
+### Error: Permission denied
+```bash
+# Run as Administrator
+```
 
-Happy cooking! 🍜✨
+## 📄 More Info
+
+See `README.md` for complete documentation.
+
+---
+**Ready in 30 seconds! 🍜**

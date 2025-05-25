@@ -339,33 +339,43 @@ class SotoAnalyzer {
     }
 
     displayAICopywriting(copywriting) {
-        const aiCopywritingContent = document.getElementById('aiCopywritingContent');
-        const hashtagsContainer = document.getElementById('hashtagsContainer');
-        const ctaButton = document.getElementById('ctaButton');
+        const copywritingDescription = document.getElementById('copywritingDescription');
+        const sellingPointsList = document.getElementById('sellingPointsList');
+        const saveButton = document.getElementById('saveButton');
+        const shareButton = document.getElementById('shareButton');
         
-        aiCopywritingContent.innerHTML = `
-            <h4>${copywriting.title}</h4>
-            <p style="margin: 15px 0; line-height: 1.6;">${copywriting.description}</p>
-            
-            <h5 style="margin-top: 25px; margin-bottom: 15px;">🎯 Selling Points:</h5>
-            <ul class="selling-points">
-                ${copywriting.sellingPoints.map(point => `<li>${point}</li>`).join('')}
-            </ul>
-            
-            ${copywriting.photoQualityBonus ? `
-                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #4caf50;">
-                    ${copywriting.photoQualityBonus}
-                </div>
-            ` : ''}
-        `;
+        // Display description
+        copywritingDescription.textContent = copywriting.description;
         
-        hashtagsContainer.innerHTML = copywriting.hashtags.map(tag => 
-            `<span class="hashtag">${tag}</span>`
-        ).join('');
+        // Display selling points without emoji (matching mockup style)
+        const sellingPoints = [
+            "Kuah Kaldu Premium: Dimasak berjam-jam untuk rasa maksimal.",
+            "Topping Melimpah: Isian lengkap dan tidak pelit.",
+            "100% Halal: Diproses secara higienis dan halal.",
+            "Pilihan Pedas: Sambal racikan sendiri yang nendang."
+        ];
         
-        ctaButton.textContent = copywriting.callToAction;
-        ctaButton.onclick = () => {
-            alert('🎉 Terima kasih! Fitur pemesanan akan segera hadir!');
+        sellingPointsList.innerHTML = sellingPoints.map(point => `<li>${point}</li>`).join('');
+        
+        // Add button event listeners
+        saveButton.onclick = () => {
+            alert('✅ Analisis berhasil disimpan!');
+        };
+        
+        shareButton.onclick = () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Hasil Analisis Soto AI',
+                    text: copywriting.description,
+                    url: window.location.href
+                });
+            } else {
+                // Fallback for browsers without Web Share API
+                const text = `Hasil Analisis Soto AI:\n\n${copywriting.description}`;
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('📋 Hasil analisis disalin ke clipboard!');
+                });
+            }
         };
     }
 
