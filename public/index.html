@@ -3,97 +3,346 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PawonWin - Analisis Foto Soto AI</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Analisis Foto Makanan & Rekomendasi AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .chat-messages::-webkit-scrollbar { width: 8px; }
+        .chat-messages::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .chat-messages::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; }
+        .chat-messages::-webkit-scrollbar-thumb:hover { background: #555; }
+        
+        .message-bubble { 
+            max-width: 95%; /* Lebih lebar untuk konten terstruktur */
+            padding: 12px 18px; 
+            border-radius: 15px; 
+            margin-bottom: 10px; 
+            word-wrap: break-word; 
+            white-space: pre-wrap; 
+        }
+        .user-message { background-color: #DCF8C6; align-self: flex-end; border-bottom-right-radius: 0; }
+        .assistant-message { background-color: #E5E7EB; align-self: flex-start; border-bottom-left-radius: 0; }
+        .assistant-message-structured { background-color: #f9fafb; /* Sedikit beda untuk konten AI */ align-self: stretch; width: 100%; }
+
+        .typing-indicator span { height: 8px; width: 8px; background-color: #9CA3AF; border-radius: 50%; display: inline-block; animation: bounce 1.4s infinite ease-in-out both; }
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1.0); } }
+        
+        #imagePreviewContainer { margin-top: 10px; margin-bottom: 5px; position: relative; max-width: 200px; align-self: center; }
+        #imagePreview { max-width: 100%; max-height: 150px; border-radius: 8px; border: 1px solid #ddd; }
+        #removeImageButton {
+            position: absolute; top: -10px; right: -10px; background-color: rgba(255,0,0,0.7); color: white;
+            border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-size: 14px; border: none;
+        }
+        
+        .record-button.recording { animation: pulse 1.5s infinite; }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+        
+        .section-title { font-size: 1.1em; font-weight: 600; color: #1F2937; margin-top: 12px; margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid #e5e7eb;}
+        .recommendation-card { background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); overflow: hidden; margin-bottom:10px; }
+        .recommendation-card img { width: 100%; height: 120px; object-fit: cover; }
+        .recommendation-card p { padding: 8px; font-size: 0.9em; text-align: center; }
+        .price-info span { display: block; margin-bottom: 4px; }
+        .price-info strong { color: #10B981; /* Tailwind green-500 */ }
+        .copywriting-desc { font-style: italic; line-height: 1.6; }
+        .image-quality-feedback { font-size: 0.9em; color: #EF4444; /* Tailwind red-500 */ margin-top: 5px; text-align: center; }
+
+    </style>
 </head>
-<body>
-    <!-- Header -->
-    <header>
-        <h1>Upload foto soto Anda untuk mendapatkan rekomendasi kualitas, harga, dan deskripsi otomatis.</h1>
-    </header>
+<body class="bg-gray-100 font-sans flex flex-col items-center justify-center min-h-screen p-4">
 
-    <!-- Main Container -->
-    <div class="container">
-        <!-- Upload Section -->
-        <section id="uploadSection" class="upload-section">
-            <div class="upload-box">
-                <h2>Upload Foto Soto Anda</h2>
-                <p>Seret dan lepas foto soto di sini, atau klik untuk memilih file</p>
-                
-                <div class="upload-area" id="uploadArea">
-                    <input type="file" id="fileInput" accept="image/*" hidden>
-                    <button class="btn-upload" id="uploadButton">Pilih File Foto</button>
+    <div class="bg-white shadow-xl rounded-lg w-full max-w-2xl flex flex-col" style="height: 90vh; max-height: 800px;">
+        <header class="bg-blue-600 text-white p-4 rounded-t-lg">
+            <h1 class="text-xl font-semibold text-center">Analisis Foto Makanan & Rekomendasi AI</h1>
+        </header>
+
+        <div id="chatMessages" class="flex-grow p-6 overflow-y-auto space-y-4 chat-messages flex flex-col">
+            <div class="flex justify-start">
+                <div class="message-bubble assistant-message">
+                    Halo! Unggah foto makanan Anda. Saya akan bantu analisis kualitas foto, berikan rekomendasi foto, estimasi harga, dan deskripsi menarik!
                 </div>
             </div>
-        </section>
-
-        <!-- Results Section (initially hidden) -->
-        <section id="resultsSection" class="results-section" style="display: none;">
-            <!-- Price Estimation -->
-            <div class="result-card price-card">
-                <h3>Estimasi & Rekomendasi Harga</h3>
-                <div class="price-range">
-                    <div class="price-item">
-                        <span class="label">Harga Termurah:</span>
-                        <span class="price" id="priceMin">Rp 12.000</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="label">Harga Termahal:</span>
-                        <span class="price" id="priceMax">Rp 28.000</span>
-                    </div>
-                </div>
-                <div class="recommended-price">
-                    <span class="label">Rekomendasi Harga AI:</span>
-                    <span class="price-big" id="priceRecommended">Rp 18.500</span>
-                </div>
-            </div>
-
-            <!-- Description -->
-            <div class="result-card description-card">
-                <h3>Deskripsi & Selling Points (AI)</h3>
-                <p class="description" id="description"></p>
-                <div class="selling-points">
-                    <h4>Selling Points Utama:</h4>
-                    <ul id="sellingPointsList"></ul>
-                </div>
-            </div>
-
-            <!-- Photo Analysis -->
-            <div class="result-card photo-analysis-card">
-                <h3>Foto Soto Anda:</h3>
-                <div class="uploaded-photo">
-                    <img id="uploadedImage" src="" alt="Foto Soto Pengguna">
-                </div>
-                <div class="photo-feedback" id="photoFeedback">
-                    <p></p>
-                </div>
-            </div>
-
-            <!-- Photo Recommendations -->
-            <div class="result-card recommendations-card">
-                <h3>Rekomendasi Foto Soto (AI)</h3>
-                <div class="photo-grid" id="photoGrid">
-                    <!-- Recommendations will be inserted here -->
-                </div>
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="action-buttons">
-                <button class="btn-save" id="saveButton">Simpan Analisis</button>
-                <button class="btn-share" id="shareButton">Bagikan Hasil</button>
-            </div>
-        </section>
-
-        <!-- Loading Indicator -->
-        <div id="loadingIndicator" class="loading" style="display: none;">
-            <div class="spinner"></div>
-            <p>Menganalisis foto Anda...</p>
         </div>
+
+        <div id="loadingIndicator" class="p-4 text-center hidden">
+            <div class="typing-indicator inline-block"><span></span><span></span><span></span></div>
+            <p class="text-sm text-gray-500">AI sedang menganalisis foto Anda...</p>
+        </div>
+        
+        <div id="errorMessage" class="p-3 bg-red-100 text-red-700 rounded-md m-4 hidden"></div>
+
+        <div id="imagePreviewContainer" class="px-4 hidden flex flex-col items-center">
+            <img id="imagePreview" src="#" alt="Pratinjau Gambar" />
+            <button id="removeImageButton" title="Hapus Gambar">&times;</button>
+        </div>
+
+        <footer class="p-4 border-t border-gray-200 bg-gray-50 rounded-b-lg">
+            <form id="chatForm" class="flex items-center space-x-2">
+                <label for="imageUpload" class="p-3 border border-gray-300 rounded-lg hover:bg-gray-100 cursor-pointer" title="Unggah Foto Makanan">
+                    <i class="fas fa-camera text-gray-600"></i>
+                    <input type="file" id="imageUpload" accept="image/*" class="hidden">
+                </label>
+                
+                <button type="button" id="voiceInputButton" class="p-3 border border-gray-300 rounded-lg hover:bg-gray-100 record-button" title="Tanya Sesuatu (Suara)">
+                    <i id="voiceIcon" class="fas fa-microphone text-gray-600"></i>
+                </button>
+
+                <input type="text" id="userInput" placeholder="Tanya tentang foto atau minta analisis..."
+                       class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-shadow"
+                       autocomplete="off">
+                <button type="submit"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                    Kirim
+                </button>
+            </form>
+        </footer>
     </div>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="toast"></div>
+    <script>
+        const chatForm = document.getElementById('chatForm');
+        const userInput = document.getElementById('userInput');
+        const chatMessages = document.getElementById('chatMessages');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const errorMessageDiv = document.getElementById('errorMessage');
+        const imageUpload = document.getElementById('imageUpload');
+        const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+        const imagePreview = document.getElementById('imagePreview');
+        const removeImageButton = document.getElementById('removeImageButton');
+        const voiceInputButton = document.getElementById('voiceInputButton');
+        const voiceIcon = document.getElementById('voiceIcon');
 
-    <script src="script.js"></script>
+        let currentImageBase64 = null;
+        let recognition = null;
+        let isRecording = false;
+
+        // --- Inisialisasi Speech Recognition (tetap sama) ---
+        if ('webkitSpeechRecognition' in window) {
+            recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.lang = 'id-ID';
+            recognition.interimResults = false;
+            recognition.onstart = () => { isRecording = true; voiceIcon.classList.remove('fa-microphone'); voiceIcon.classList.add('fa-stop-circle', 'text-red-500'); voiceInputButton.classList.add('recording'); userInput.placeholder = "Mendengarkan..."; };
+            recognition.onresult = (event) => { userInput.value = event.results[0][0].transcript; };
+            recognition.onerror = (event) => { console.error('Speech recognition error:', event.error); displayError('Error pengenalan suara: ' + event.error); if (event.error === 'not-allowed' || event.error === 'service-not-allowed') { displayError('Akses mikrofon ditolak. Periksa pengaturan browser.'); }};
+            recognition.onend = () => { isRecording = false; voiceIcon.classList.add('fa-microphone'); voiceIcon.classList.remove('fa-stop-circle', 'text-red-500'); voiceInputButton.classList.remove('recording'); userInput.placeholder = "Tanya tentang foto atau minta analisis..."; };
+        } else { voiceInputButton.disabled = true; voiceInputButton.title = "Input suara tidak didukung browser ini."; console.warn("Speech Recognition API tidak didukung."); }
+        voiceInputButton.addEventListener('click', () => { if (!recognition) return; if (isRecording) { recognition.stop(); } else { try { recognition.start(); } catch (e) { console.error("Gagal memulai speech recognition:", e); displayError("Tidak dapat memulai input suara."); } } });
+        // --- Akhir Speech Recognition ---
+
+        imageUpload.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    currentImageBase64 = e.target.result;
+                    imagePreview.src = currentImageBase64;
+                    imagePreviewContainer.classList.remove('hidden');
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        removeImageButton.addEventListener('click', () => {
+            currentImageBase64 = null;
+            imagePreview.src = '#';
+            imagePreviewContainer.classList.add('hidden');
+            imageUpload.value = '';
+        });
+
+        chatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const promptText = userInput.value.trim();
+
+            if (!promptText && !currentImageBase64) {
+                displayError("Harap unggah foto makanan atau masukkan pertanyaan.");
+                return;
+            }
+
+            addMessageToChat('user', promptText, currentImageBase64);
+            userInput.value = ''; 
+            const imageToSend = currentImageBase64; 
+            // Jangan hapus pratinjau otomatis, user mungkin ingin bertanya lebih lanjut.
+            // Jika ingin menghapus setelah kirim: if (currentImageBase64) { removeImageButton.click(); }
+
+            errorMessageDiv.classList.add('hidden');
+            loadingIndicator.classList.remove('hidden');
+
+            try {
+                const payload = { prompt: promptText };
+                if (imageToSend) {
+                    payload.image = imageToSend; // Kirim gambar jika ada
+                }
+
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                });
+
+                loadingIndicator.classList.add('hidden');
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    displayError(errorData.error || `Error: ${response.status} ${response.statusText}`);
+                    return;
+                }
+
+                const data = await response.json();
+                // Asumsikan backend akan mengirimkan objek terstruktur jika ada analisis gambar
+                if (data.response && typeof data.response.content === 'object' && data.response.content.isFoodAnalysis) {
+                    addStructuredFoodAnalysisToChat(data.response.content);
+                } else if (data.response && typeof data.response.content === 'string') {
+                    addMessageToChat('assistant', data.response.content, null, true);
+                } else {
+                     displayError("Format respons AI tidak dikenali.");
+                }
+
+            } catch (error) {
+                loadingIndicator.classList.add('hidden');
+                console.error('Error sending message:', error);
+                displayError("Tidak dapat terhubung ke server atau terjadi kesalahan jaringan.");
+            }
+        });
+
+        function createSectionTitle(title) {
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'section-title';
+            titleDiv.textContent = title;
+            return titleDiv;
+        }
+        
+        function addStructuredFoodAnalysisToChat(analysisData) {
+            const messageWrapper = document.createElement('div');
+            messageWrapper.classList.add('flex', 'flex-col', 'items-start', 'w-full', 'space-y-3');
+
+            const analysisBubble = document.createElement('div');
+            analysisBubble.classList.add('message-bubble', 'assistant-message-structured', 'p-4', 'rounded-lg', 'w-full');
+
+            // 1. Gambar Hasil Foto & Kualitas
+            if (analysisData.uploadedImageUrl) { // Asumsi backend mengirim kembali URL gambar yang diunggah (atau base64)
+                analysisBubble.appendChild(createSectionTitle("1. Hasil Foto Anda"));
+                const uploadedImg = document.createElement('img');
+                uploadedImg.src = analysisData.uploadedImageUrl; // atau currentImageBase64 jika tidak dikirim kembali
+                uploadedImg.alt = "Foto Makanan Anda";
+                uploadedImg.classList.add('max-w-full', 'h-auto', 'rounded-lg', 'mb-2', 'border', 'mx-auto', 'block', 'max-h-60');
+                analysisBubble.appendChild(uploadedImg);
+                if (analysisData.uploadedImageQualityFeedback) {
+                    const feedbackP = document.createElement('p');
+                    feedbackP.className = 'image-quality-feedback';
+                    feedbackP.textContent = analysisData.uploadedImageQualityFeedback;
+                    analysisBubble.appendChild(feedbackP);
+                }
+            }
+            
+            // 2. Rekomendasi Foto Bagus
+            if (analysisData.recommendedImages && analysisData.recommendedImages.length > 0) {
+                analysisBubble.appendChild(createSectionTitle("2. Rekomendasi Foto Produk Serupa (AI)"));
+                const gridDiv = document.createElement('div');
+                gridDiv.className = 'grid grid-cols-2 sm:grid-cols-3 gap-3 mt-2';
+                analysisData.recommendedImages.forEach(imgData => {
+                    const card = document.createElement('div');
+                    card.className = 'recommendation-card';
+                    const img = document.createElement('img');
+                    img.src = imgData.url; // Misal: "https://placehold.co/300x200/EBF4FF/7F9CF5?text=Soto+AI+1"
+                    img.alt = imgData.caption || "Rekomendasi Foto";
+                    card.appendChild(img);
+                    if(imgData.caption){
+                        const captionP = document.createElement('p');
+                        captionP.textContent = imgData.caption;
+                        card.appendChild(captionP);
+                    }
+                    gridDiv.appendChild(card);
+                });
+                analysisBubble.appendChild(gridDiv);
+            }
+
+            // 3. Rekomendasi Harga
+            if (analysisData.pricingInfo) {
+                analysisBubble.appendChild(createSectionTitle("3. Rekomendasi Harga (AI)"));
+                const priceDiv = document.createElement('div');
+                priceDiv.className = 'price-info text-sm p-2 bg-gray-50 rounded-md';
+                if(analysisData.pricingInfo.estimation) {
+                    priceDiv.innerHTML += `<span>Perkiraan Harga Pasar: <strong>Rp ${analysisData.pricingInfo.estimation.min.toLocaleString('id-ID')} - Rp ${analysisData.pricingInfo.estimation.max.toLocaleString('id-ID')}</strong></span>`;
+                }
+                if(analysisData.pricingInfo.recommendation) {
+                    priceDiv.innerHTML += `<span>Rekomendasi Harga Jual: <strong>Rp ${analysisData.pricingInfo.recommendation.price.toLocaleString('id-ID')}</strong></span>`;
+                }
+                analysisBubble.appendChild(priceDiv);
+            }
+
+            // 4. Deskripsi Copywriting
+            if (analysisData.copywritingDescription) {
+                analysisBubble.appendChild(createSectionTitle("4. Deskripsi Produk (AI Copywriting)"));
+                const descP = document.createElement('p');
+                descP.className = 'copywriting-desc p-2 bg-gray-50 rounded-md text-sm';
+                // Ganti markdown sederhana ke HTML
+                let formattedDesc = analysisData.copywritingDescription.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                formattedDesc = formattedDesc.replace(/\*(.*?)\*/g, '<em>$1</em>');
+                descP.innerHTML = formattedDesc;
+                analysisBubble.appendChild(descP);
+            }
+            
+            messageWrapper.appendChild(analysisBubble);
+            chatMessages.appendChild(messageWrapper);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+
+        function addMessageToChat(role, text, imageBase64 = null, isAIReplyWithPotentialHTML = false) {
+            const messageWrapper = document.createElement('div');
+            messageWrapper.classList.add('flex', 'flex-col');
+            
+            if (role === 'user') {
+                messageWrapper.classList.add('items-end');
+            } else {
+                messageWrapper.classList.add('items-start', 'w-full'); // Asisten bisa full width
+            }
+
+            if (imageBase64 && role === 'user') {
+                const imgElement = document.createElement('img');
+                imgElement.src = imageBase64;
+                imgElement.alt = "Gambar Anda";
+                imgElement.classList.add('max-w-xs', 'max-h-48', 'rounded-lg', 'mb-2', 'border', 'border-gray-300', 'self-end');
+                messageWrapper.appendChild(imgElement);
+            }
+
+            if (text || (role === 'assistant' && !text && !imageBase64)) {
+                const messageBubble = document.createElement('div');
+                messageBubble.classList.add('message-bubble');
+                
+                if (role === 'user') {
+                    messageBubble.classList.add('user-message');
+                    messageBubble.textContent = text;
+                } else { 
+                    messageBubble.classList.add('assistant-message');
+                    if (isAIReplyWithPotentialHTML) {
+                        let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                        formattedText = formattedText.replace(/\*(.*?)\*/g, '<em>$1</em>');
+                        messageBubble.innerHTML = formattedText || "...";
+                    } else {
+                        messageBubble.textContent = text || "...";
+                    }
+                }
+                 if (text || role === 'assistant') { messageWrapper.appendChild(messageBubble); }
+            }
+            
+            if (messageWrapper.hasChildNodes()) {
+                 chatMessages.appendChild(messageWrapper);
+                 chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }
+
+        function displayError(message) {
+            errorMessageDiv.textContent = message;
+            errorMessageDiv.classList.remove('hidden');
+        }
+    </script>
+
 </body>
 </html>
