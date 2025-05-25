@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawonWin - Analisis Foto Soto AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Upload foto soto Anda untuk mendapatkan rekomendasi kualitas, harga, dan deskripsi otomatis.</h1>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Upload Section -->
+        <section id="uploadSection" class="upload-section">
+            <div class="upload-box">
+                <h2>Upload Foto Soto Anda</h2>
+                <p>Seret dan lepas foto soto di sini, atau klik untuk memilih file</p>
+                
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                    <button class="btn-upload" id="uploadButton">Pilih File Foto</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section (initially hidden) -->
+        <section id="resultsSection" class="results-section" style="display: none;">
+            <!-- Price Estimation -->
+            <div class="result-card price-card">
+                <h3>Estimasi & Rekomendasi Harga</h3>
+                <div class="price-range">
+                    <div class="price-item">
+                        <span class="label">Harga Termurah:</span>
+                        <span class="price" id="priceMin">Rp 12.000</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="label">Harga Termahal:</span>
+                        <span class="price" id="priceMax">Rp 28.000</span>
+                    </div>
+                </div>
+                <div class="recommended-price">
+                    <span class="label">Rekomendasi Harga AI:</span>
+                    <span class="price-big" id="priceRecommended">Rp 18.500</span>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="result-card description-card">
+                <h3>Deskripsi & Selling Points (AI)</h3>
+                <p class="description" id="description"></p>
+                <div class="selling-points">
+                    <h4>Selling Points Utama:</h4>
+                    <ul id="sellingPointsList"></ul>
+                </div>
+            </div>
+
+            <!-- Photo Analysis -->
+            <div class="result-card photo-analysis-card">
+                <h3>Foto Soto Anda:</h3>
+                <div class="uploaded-photo">
+                    <img id="uploadedImage" src="" alt="Foto Soto Pengguna">
+                </div>
+                <div class="photo-feedback" id="photoFeedback">
+                    <p></p>
+                </div>
+            </div>
+
+            <!-- Photo Recommendations -->
+            <div class="result-card recommendations-card">
+                <h3>Rekomendasi Foto Soto (AI)</h3>
+                <div class="photo-grid" id="photoGrid">
+                    <!-- Recommendations will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn-save" id="saveButton">Simpan Analisis</button>
+                <button class="btn-share" id="shareButton">Bagikan Hasil</button>
+            </div>
+        </section>
+
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Menganalisis foto Anda...</p>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

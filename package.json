@@ -1,26 +1,27 @@
 {
   "name": "pawonwin",
   "version": "1.0.0",
-  "description": "Upload foto makanan untuk mendapatkan rekomendasi kualitas, harga, dan deskripsi otomatis",
-  "main": "app.js",
+  "description": "AI-powered Soto photo analyzer",
+  "main": "server.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
-    "test": "jest",
-    "install-deps": "npm install"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
-  "keywords": ["makanan", "food", "analyzer", "upload", "express", "multer", "ai", "kuliner"],
-  "author": "Team Pawonwin",
-  "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
     "multer": "^1.4.5-lts.1",
-    "ejs": "^3.1.9",
-    "uuid": "^9.0.0"
+    "sharp": "^0.32.6"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1",
-    "jest": "^29.7.0",
-    "supertest": "^6.3.3"
-  }
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "soto",
+    "food",
+    "ai",
+    "analysis",
+    "indonesia"
+  ],
+  "author": "PawonWin",
+  "license": "ISC"
 }
