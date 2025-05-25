@@ -568,7 +568,7 @@ process.on('SIGINT', () => {
     process.exit(0);
 });
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
     console.log(`🍜 Soto Analyzer Server running on http://localhost:${PORT}`);
     console.log(`📂 Upload folder: ${path.resolve('./upload')}`);
     console.log(`🕐 Started at: ${new Date().toLocaleString('id-ID')}`);
