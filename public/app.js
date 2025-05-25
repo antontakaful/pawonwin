@@ -236,104 +236,58 @@ class SotoAnalyzer {
 
     displayPhotoAnalysis(analysis) {
         const photoPreview = document.getElementById('resultPhotoPreview');
-        const qualityFeedback = document.getElementById('photoQualityFeedback');
-        const qualityIndicators = document.getElementById('qualityIndicators');
-        const photoSuggestions = document.getElementById('photoSuggestions');
+        const photoFeedback = document.getElementById('photoFeedback');
         
-        // Display uploaded photo
+        // Display uploaded photo sesuai mockup design
         photoPreview.innerHTML = `
-            <img src="${analysis.imageUrl}" alt="Foto soto yang diupload">
-            <p><strong>Jenis Soto Terdeteksi:</strong> ${analysis.type}</p>
-            <p><strong>Confidence:</strong> ${analysis.confidence}%</p>
-        `;
-        
-        // Display quality feedback
-        const qualityColor = analysis.photoQuality.score >= 80 ? '#4caf50' : 
-                           analysis.photoQuality.score >= 65 ? '#ff9800' : '#f44336';
-        
-        qualityFeedback.innerHTML = `
-            <div style="text-align: center; margin: 20px 0;">
-                <div style="color: ${qualityColor}; font-size: 2rem; font-weight: bold;">
-                    ${analysis.photoQuality.score}/100
-                </div>
-                <div style="color: ${qualityColor}; font-weight: 600; margin: 10px 0;">
-                    Kualitas: ${analysis.photoQuality.qualityLevel}
-                </div>
-                <p style="color: #666; margin: 15px 0;">
-                    ${analysis.photoQuality.feedback}
-                </p>
+            <img src="${analysis.imageUrl}" alt="Foto soto yang diupload" style="max-width: 300px; max-height: 200px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+            <div style="margin-top: 10px; color: #666; font-size: 0.9rem;">
+                <strong>Jenis Soto:</strong> ${analysis.type} (${analysis.confidence}% confidence)
             </div>
         `;
         
-        // Display quality indicators
-        qualityIndicators.innerHTML = analysis.photoQuality.factors.map(factor => `
-            <div class="quality-indicator">
-                <div class="quality-score">${factor.score}</div>
-                <div>${factor.name}</div>
-            </div>
-        `).join('');
-        
-        // Display suggestions if quality is not perfect
-        if (analysis.photoQuality.score < 85) {
-            photoSuggestions.innerHTML = `
-                <h4>💡 Saran Perbaikan Foto:</h4>
-                <ul>
-                    ${analysis.photoQuality.suggestions.map(suggestion => `<li>${suggestion}</li>`).join('')}
-                </ul>
-            `;
-            photoSuggestions.style.display = 'block';
-        } else {
-            photoSuggestions.style.display = 'none';
-        }
+        // Display feedback dengan style mockup (pink background sesuai design)
+        photoFeedback.innerHTML = `
+            <p style="margin: 0; color: #c2185b; font-size: 0.95rem; line-height: 1.5;">${analysis.photoQuality.feedback}</p>
+        `;
     }
 
     displayRecommendations(recommendations) {
         const recommendationsGrid = document.getElementById('recommendationsGrid');
         
-        recommendationsGrid.innerHTML = recommendations.map(item => `
+        // Menggunakan nama yang sesuai mockup design
+        const mockupNames = [
+            'Soto Ayam Cerah',
+            'Soto Betawi Detail', 
+            'Soto Lamongan Top',
+            'Soto Babat Khas'
+        ];
+        
+        recommendationsGrid.innerHTML = recommendations.slice(0, 4).map((item, index) => `
             <div class="recommendation-card">
-                <img src="${item.sampleImage}" alt="${item.type}" class="recommendation-image">
-                <div class="recommendation-content">
-                    <div class="merchant-name">${item.merchant}</div>
-                    <h4>${item.type}</h4>
-                    <p>${item.description.substring(0, 100)}...</p>
-                    <div class="rating">
-                        <span class="stars">⭐⭐⭐⭐⭐</span>
-                        <span>${item.qualityRating.toFixed(1)} (${item.totalReviews} reviews)</span>
-                    </div>
-                    <div style="margin-top: 10px; color: #2e7d32; font-weight: 600;">
-                        ${item.price}
-                    </div>
-                </div>
+                <div class="recommendation-image">Rekomendasi<br>Soto ${index + 1}</div>
+                <h4 class="recommendation-title">${mockupNames[index] || item.type}</h4>
             </div>
         `).join('');
     }
 
     displayPriceRecommendations(priceRec) {
-        const priceReasoning = document.getElementById('priceReasoning');
-        const priceCards = document.getElementById('priceCards');
+        const priceContent = document.getElementById('priceContent');
         
-        priceReasoning.textContent = priceRec.reasoning;
-        
-        priceCards.innerHTML = `
-            <div class="price-card">
-                <div class="price-label">Harga Terendah Pasar</div>
-                <div class="price-value">Rp ${priceRec.marketAnalysis.lowest.toLocaleString('id-ID')}</div>
+        // Format sesuai mockup design dengan layout sederhana
+        priceContent.innerHTML = `
+            <div class="price-row">
+                <span class="price-label">Harga Termurah:</span>
+                <span class="price-value">Rp ${priceRec.range.min.toLocaleString('id-ID')}</span>
             </div>
-            <div class="price-card ai-recommended">
-                <div class="price-label" style="color: white;">🤖 Rekomendasi AI</div>
-                <div class="price-value" style="color: white;">Rp ${priceRec.recommended.toLocaleString('id-ID')}</div>
-                <div style="color: rgba(255,255,255,0.9); font-size: 0.8rem;">Optimal & Competitive</div>
+            <div class="price-row">
+                <span class="price-label">Harga Termahal:</span>
+                <span class="price-value">Rp ${priceRec.range.max.toLocaleString('id-ID')}</span>
             </div>
-            <div class="price-card">
-                <div class="price-label">Harga Tertinggi Pasar</div>
-                <div class="price-value">Rp ${priceRec.marketAnalysis.highest.toLocaleString('id-ID')}</div>
-            </div>
-            <div class="price-card">
-                <div class="price-label">Range Harga</div>
-                <div class="price-value" style="font-size: 1.2rem;">
-                    Rp ${priceRec.range.min.toLocaleString('id-ID')} - ${priceRec.range.max.toLocaleString('id-ID')}
-                </div>
+            <hr class="price-divider">
+            <div class="ai-price-recommendation">
+                <div class="ai-price-label">Rekomendasi Harga AI:</div>
+                <div class="ai-price-value">Rp ${priceRec.recommended.toLocaleString('id-ID')}</div>
             </div>
         `;
     }

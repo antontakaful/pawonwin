@@ -1,5 +1,437 @@
 [
   {
+    "filename": "0324dfaa-59c3-4204-b1b8-1aad5fec8105.jpg",
+    "originalName": "IMG_20250525_003230.jpg",
+    "fileSize": 528510,
+    "analysis": {
+      "type": "Soto Betawi",
+      "quality": "Premium",
+      "price": "Rp 18.000 - 25.000",
+      "description": "Soto khas Betawi dengan kuah santan yang creamy, daging sapi dan jeroan, serta rempah-rempah khas. Disajikan dengan ketupat dan kerupuk.",
+      "ingredients": [
+        "Daging sapi",
+        "Jeroan",
+        "Santan",
+        "Kentang",
+        "Tomat"
+      ],
+      "region": "Jakarta",
+      "sampleImage": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop",
+      "merchant": "Soto Betawi Haji Mamat",
+      "confidence": 92,
+      "filename": "0324dfaa-59c3-4204-b1b8-1aad5fec8105.jpg",
+      "uploadTime": "25/5/2025, 07.11.32",
+      "imageUrl": "/upload/0324dfaa-59c3-4204-b1b8-1aad5fec8105.jpg",
+      "photoQuality": {
+        "qualityLevel": "Sangat Baik",
+        "score": 86,
+        "feedback": "Foto Anda memiliki kualitas yang sangat baik! Pencahayaan, kejelasan, dan komposisi sudah optimal.",
+        "suggestions": [
+          "Pertahankan kualitas foto seperti ini",
+          "Foto siap untuk dipublikasikan"
+        ],
+        "factors": [
+          {
+            "name": "Pencahayaan",
+            "score": 97
+          },
+          {
+            "name": "Kejelasan",
+            "score": 73
+          },
+          {
+            "name": "Komposisi",
+            "score": 78
+          },
+          {
+            "name": "Fokus",
+            "score": 97
+          }
+        ]
+      },
+      "recommendations": [
+        {
+          "type": "Soto Ayam",
+          "quality": "Premium",
+          "price": "Rp 15.000 - 20.000",
+          "description": "Soto ayam dengan kuah bening yang gurih, daging ayam empuk, dan bumbu rempah yang kaya. Dilengkapi dengan nasi putih, kerupuk, dan sambal.",
+          "ingredients": [
+            "Ayam kampung",
+            "Kunyit",
+            "Jahe",
+            "Serai",
+            "Daun jeruk"
+          ],
+          "region": "Jawa Tengah",
+          "sampleImage": "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=400&h=300&fit=crop",
+          "merchant": "Warung Soto Pak Budi",
+          "isRecommended": true,
+          "qualityRating": 4.775039322794328,
+          "totalReviews": 547
+        },
+        {
+          "type": "Soto Lamongan",
+          "quality": "Standard",
+          "price": "Rp 12.000 - 18.000",
+          "description": "Soto ayam khas Lamongan dengan kuah kuning yang segar, ayam kampung, dan koya (kerupuk yang dihaluskan). Rasanya unik dan menyegarkan.",
+          "ingredients": [
+            "Ayam kampung",
+            "Koya",
+            "Kacang kedelai",
+            "Kluwek",
+            "Tempe"
+          ],
+          "region": "Jawa Timur",
+          "sampleImage": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&h=300&fit=crop",
+          "merchant": "Soto Lamongan Cak Har",
+          "isRecommended": true,
+          "qualityRating": 4.604245743899144,
+          "totalReviews": 385
+        },
+        {
+          "type": "Soto Madura",
+          "quality": "Premium",
+          "price": "Rp 17.000 - 23.000",
+          "description": "Soto ayam khas Madura dengan kuah kuning yang kental, daging ayam yang empuk, dan bumbu rempah yang kuat.",
+          "ingredients": [
+            "Ayam",
+            "Kunyit",
+            "Kemiri",
+            "Petai cina",
+            "Tauge"
+          ],
+          "region": "Jawa Timur",
+          "sampleImage": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=300&fit=crop",
+          "merchant": "Soto Madura Pak Yusuf",
+          "isRecommended": true,
+          "qualityRating": 4.616208947284244,
+          "totalReviews": 260
+        }
+      ],
+      "priceRecommendation": {
+        "recommended": 26000,
+        "range": {
+          "min": 23000,
+          "max": 25000
+        },
+        "marketAnalysis": {
+          "lowest": 10000,
+          "highest": 25000,
+          "average": 17500
+        },
+        "reasoning": "Berdasarkan analisis AI, harga yang direkomendasikan untuk Soto Betawi dengan kualitas Premium adalah Rp 26.000. Harga ini competitive dengan range pasar Rp 23.000 - Rp 25.000."
+      },
+      "aiCopywriting": {
+        "title": "Sensasi Rasa yang Memanjakan Lidah",
+        "description": "Rasakan kehangatan Soto Betawi dengan kuah yang gurih dan daging yang empuk. Kombinasi sempurna antara daging sapi berkualitas tinggi dengan bumbu rempah nusantara yang kaya akan cita rasa.",
+        "sellingPoints": [
+          "💝 Porsi yang mengenyangkan dan memuaskan",
+          "👨‍🍳 Dimasak oleh chef berpengalaman",
+          "📍 Mudah dijangkau dan parkir luas",
+          "🏆 Sudah dipercaya ribuan pelanggan"
+        ],
+        "callToAction": "Order now dan nikmati promo spesial hari ini!",
+        "hashtags": [
+          "#SotoBetawi",
+          "#KulinerJakarta",
+          "#SotoEnak",
+          "#KulinerNusantara",
+          "#MakananTradisional"
+        ],
+        "photoQualityBonus": "\n\n✨ BONUS: Foto Anda sangat menarik! Cocok untuk dipromosikan di media sosial dengan kualitas visual yang memukau."
+      }
+    },
+    "timestamp": "2025-05-25T00:11:32.537Z"
+  },
+  {
+    "filename": "2e6ee97d-fbcb-421a-8b49-fd6f870a6954.jpg",
+    "originalName": "IMG_20250525_003349.jpg",
+    "fileSize": 347145,
+    "analysis": {
+      "type": "Soto Kudus",
+      "quality": "Premium",
+      "price": "Rp 16.000 - 22.000",
+      "description": "Soto ayam khas Kudus dengan kuah bening yang jernih, daging ayam yang lembut, dan bumbu yang pas. Disajikan dengan nasi dan kerupuk.",
+      "ingredients": [
+        "Ayam",
+        "Tauge",
+        "Seledri",
+        "Bawang goreng",
+        "Kerupuk"
+      ],
+      "region": "Jawa Tengah",
+      "sampleImage": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop",
+      "merchant": "Soto Kudus Bu Tini",
+      "confidence": 84,
+      "filename": "2e6ee97d-fbcb-421a-8b49-fd6f870a6954.jpg",
+      "uploadTime": "25/5/2025, 07.06.52",
+      "imageUrl": "/upload/2e6ee97d-fbcb-421a-8b49-fd6f870a6954.jpg",
+      "photoQuality": {
+        "qualityLevel": "Baik",
+        "score": 81,
+        "feedback": "Foto Anda cukup baik, namun masih bisa ditingkatkan untuk hasil yang lebih optimal.",
+        "suggestions": [
+          "Coba ambil foto dengan pencahayaan yang lebih terang",
+          "Pastikan fokus tepat pada objek soto",
+          "Gunakan background yang lebih bersih"
+        ],
+        "factors": [
+          {
+            "name": "Pencahayaan",
+            "score": 86
+          },
+          {
+            "name": "Kejelasan",
+            "score": 74
+          },
+          {
+            "name": "Komposisi",
+            "score": 78
+          },
+          {
+            "name": "Fokus",
+            "score": 84
+          }
+        ]
+      },
+      "recommendations": [
+        {
+          "type": "Soto Madura",
+          "quality": "Premium",
+          "price": "Rp 17.000 - 23.000",
+          "description": "Soto ayam khas Madura dengan kuah kuning yang kental, daging ayam yang empuk, dan bumbu rempah yang kuat.",
+          "ingredients": [
+            "Ayam",
+            "Kunyit",
+            "Kemiri",
+            "Petai cina",
+            "Tauge"
+          ],
+          "region": "Jawa Timur",
+          "sampleImage": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=300&fit=crop",
+          "merchant": "Soto Madura Pak Yusuf",
+          "isRecommended": true,
+          "qualityRating": 4.6847801408927445,
+          "totalReviews": 473
+        },
+        {
+          "type": "Soto Ayam",
+          "quality": "Premium",
+          "price": "Rp 15.000 - 20.000",
+          "description": "Soto ayam dengan kuah bening yang gurih, daging ayam empuk, dan bumbu rempah yang kaya. Dilengkapi dengan nasi putih, kerupuk, dan sambal.",
+          "ingredients": [
+            "Ayam kampung",
+            "Kunyit",
+            "Jahe",
+            "Serai",
+            "Daun jeruk"
+          ],
+          "region": "Jawa Tengah",
+          "sampleImage": "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=400&h=300&fit=crop",
+          "merchant": "Warung Soto Pak Budi",
+          "isRecommended": true,
+          "qualityRating": 4.51531314247495,
+          "totalReviews": 311
+        },
+        {
+          "type": "Soto Banjar",
+          "quality": "Standard",
+          "price": "Rp 14.000 - 19.000",
+          "description": "Soto khas Kalimantan Selatan dengan daging ayam, perkedel kentang, dan kuah yang gurih. Memiliki cita rasa yang khas.",
+          "ingredients": [
+            "Ayam",
+            "Perkedel kentang",
+            "Ketupat",
+            "Bawang goreng"
+          ],
+          "region": "Kalimantan Selatan",
+          "sampleImage": "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400&h=300&fit=crop",
+          "merchant": "Soto Banjar Kalimantan",
+          "isRecommended": true,
+          "qualityRating": 4.8358298987595205,
+          "totalReviews": 150
+        }
+      ],
+      "priceRecommendation": {
+        "recommended": 21000,
+        "range": {
+          "min": 18000,
+          "max": 24000
+        },
+        "marketAnalysis": {
+          "lowest": 10000,
+          "highest": 25000,
+          "average": 17500
+        },
+        "reasoning": "Berdasarkan analisis AI, harga yang direkomendasikan untuk Soto Kudus dengan kualitas Premium adalah Rp 21.000. Harga ini competitive dengan range pasar Rp 18.000 - Rp 24.000."
+      },
+      "aiCopywriting": {
+        "title": "Tradisi Kuliner Nusantara di Setiap Mangkuk",
+        "description": "Soto Kudus kami menghadirkan kearifan kuliner Jawa Tengah yang telah turun-temurun. Dimasak dengan resep rahasia keluarga, menggunakan ayam, tauge, seledri pilihan untuk cita rasa yang sempurna.",
+        "sellingPoints": [
+          "🏆 Sudah dipercaya ribuan pelanggan",
+          "🥘 Bahan-bahan segar pilihan setiap hari",
+          "🔥 Disajikan selalu hangat dan fresh",
+          "👨‍🍳 Dimasak oleh chef berpengalaman"
+        ],
+        "callToAction": "Jangan sampai terlewat! Pesan sekarang juga!",
+        "hashtags": [
+          "#SotoKudus",
+          "#KulinerJawaTengah",
+          "#SotoEnak",
+          "#KulinerNusantara",
+          "#MakananTradisional"
+        ],
+        "photoQualityBonus": "\n\n✨ BONUS: Foto Anda sangat menarik! Cocok untuk dipromosikan di media sosial dengan kualitas visual yang memukau."
+      }
+    },
+    "timestamp": "2025-05-25T00:06:52.224Z"
+  },
+  {
+    "filename": "c7a55506-48a0-4fce-87d2-4f938820556a.jpg",
+    "originalName": "IMG_20250525_003349.jpg",
+    "fileSize": 347145,
+    "analysis": {
+      "type": "Soto Kudus",
+      "quality": "Premium",
+      "price": "Rp 16.000 - 22.000",
+      "description": "Soto ayam khas Kudus dengan kuah bening yang jernih, daging ayam yang lembut, dan bumbu yang pas. Disajikan dengan nasi dan kerupuk.",
+      "ingredients": [
+        "Ayam",
+        "Tauge",
+        "Seledri",
+        "Bawang goreng",
+        "Kerupuk"
+      ],
+      "region": "Jawa Tengah",
+      "sampleImage": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop",
+      "merchant": "Soto Kudus Bu Tini",
+      "confidence": 82,
+      "filename": "c7a55506-48a0-4fce-87d2-4f938820556a.jpg",
+      "uploadTime": "25/5/2025, 07.06.10",
+      "imageUrl": "/upload/c7a55506-48a0-4fce-87d2-4f938820556a.jpg",
+      "photoQuality": {
+        "qualityLevel": "Baik",
+        "score": 79,
+        "feedback": "Foto Anda cukup baik, namun masih bisa ditingkatkan untuk hasil yang lebih optimal.",
+        "suggestions": [
+          "Coba ambil foto dengan pencahayaan yang lebih terang",
+          "Pastikan fokus tepat pada objek soto",
+          "Gunakan background yang lebih bersih"
+        ],
+        "factors": [
+          {
+            "name": "Pencahayaan",
+            "score": 63
+          },
+          {
+            "name": "Kejelasan",
+            "score": 91
+          },
+          {
+            "name": "Komposisi",
+            "score": 83
+          },
+          {
+            "name": "Fokus",
+            "score": 77
+          }
+        ]
+      },
+      "recommendations": [
+        {
+          "type": "Soto Banjar",
+          "quality": "Standard",
+          "price": "Rp 14.000 - 19.000",
+          "description": "Soto khas Kalimantan Selatan dengan daging ayam, perkedel kentang, dan kuah yang gurih. Memiliki cita rasa yang khas.",
+          "ingredients": [
+            "Ayam",
+            "Perkedel kentang",
+            "Ketupat",
+            "Bawang goreng"
+          ],
+          "region": "Kalimantan Selatan",
+          "sampleImage": "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400&h=300&fit=crop",
+          "merchant": "Soto Banjar Kalimantan",
+          "isRecommended": true,
+          "qualityRating": 4.553864675838227,
+          "totalReviews": 340
+        },
+        {
+          "type": "Soto Lamongan",
+          "quality": "Standard",
+          "price": "Rp 12.000 - 18.000",
+          "description": "Soto ayam khas Lamongan dengan kuah kuning yang segar, ayam kampung, dan koya (kerupuk yang dihaluskan). Rasanya unik dan menyegarkan.",
+          "ingredients": [
+            "Ayam kampung",
+            "Koya",
+            "Kacang kedelai",
+            "Kluwek",
+            "Tempe"
+          ],
+          "region": "Jawa Timur",
+          "sampleImage": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&h=300&fit=crop",
+          "merchant": "Soto Lamongan Cak Har",
+          "isRecommended": true,
+          "qualityRating": 4.726634268778002,
+          "totalReviews": 371
+        },
+        {
+          "type": "Soto Betawi",
+          "quality": "Premium",
+          "price": "Rp 18.000 - 25.000",
+          "description": "Soto khas Betawi dengan kuah santan yang creamy, daging sapi dan jeroan, serta rempah-rempah khas. Disajikan dengan ketupat dan kerupuk.",
+          "ingredients": [
+            "Daging sapi",
+            "Jeroan",
+            "Santan",
+            "Kentang",
+            "Tomat"
+          ],
+          "region": "Jakarta",
+          "sampleImage": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop",
+          "merchant": "Soto Betawi Haji Mamat",
+          "isRecommended": true,
+          "qualityRating": 4.6414817400543775,
+          "totalReviews": 171
+        }
+      ],
+      "priceRecommendation": {
+        "recommended": 21000,
+        "range": {
+          "min": 18000,
+          "max": 24000
+        },
+        "marketAnalysis": {
+          "lowest": 10000,
+          "highest": 25000,
+          "average": 17500
+        },
+        "reasoning": "Berdasarkan analisis AI, harga yang direkomendasikan untuk Soto Kudus dengan kualitas Premium adalah Rp 21.000. Harga ini competitive dengan range pasar Rp 18.000 - Rp 24.000."
+      },
+      "aiCopywriting": {
+        "title": "Sensasi Rasa yang Memanjakan Lidah",
+        "description": "Rasakan kehangatan Soto Kudus dengan kuah yang gurih dan daging yang empuk. Kombinasi sempurna antara ayam berkualitas tinggi dengan bumbu rempah nusantara yang kaya akan cita rasa.",
+        "sellingPoints": [
+          "🌟 Resep turun-temurun yang autentik",
+          "🔥 Disajikan selalu hangat dan fresh",
+          "🏆 Sudah dipercaya ribuan pelanggan",
+          "💰 Harga terjangkau untuk kualitas premium"
+        ],
+        "callToAction": "Jangan sampai terlewat! Pesan sekarang juga!",
+        "hashtags": [
+          "#SotoKudus",
+          "#KulinerJawaTengah",
+          "#SotoEnak",
+          "#KulinerNusantara",
+          "#MakananTradisional"
+        ],
+        "photoQualityBonus": ""
+      }
+    },
+    "timestamp": "2025-05-25T00:06:10.939Z"
+  },
+  {
     "filename": "c11f6eb2-8925-4c20-b935-d68b344047b1.jpg",
     "originalName": "Gambar Kamar tidur utama.jpg",
     "fileSize": 355181,
