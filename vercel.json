@@ -1,0 +1,15 @@
+    {
+      "version": 2,
+      "builds": [
+        {
+          "src": "foodserver.js",
+          "use": "@vercel/node"
+        }
+      ],
+      "routes": [
+        {
+          "src": "/(.*)",
+          "dest": "foodserver.js"
+        }
+      ]
+    }
