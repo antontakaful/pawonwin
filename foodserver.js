@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // --- KONFIGURASI PENTING ---
-const DASH_SCOPE_API_KEY = process.env.DASH_SCOPE_API_KEY || "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"; // <--- GANTI DENGAN API KEY ANDA YANG VALID
+const DASH_SCOPE_API_KEY = process.env.DASH_SCOPE_API_KEY || "sk-f94bd895e4114205a4d589ef5d240864"; // <--- GANTI DENGAN API KEY ANDA YANG VALID
 const API_CALL_TIMEOUT_MS = 120000; // Naikkan timeout untuk analisis gambar yang lebih kompleks (120 detik)
 const ARTIFICIAL_DELAY_MS = 200;   // Jeda buatan minimal
 
